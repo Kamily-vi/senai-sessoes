@@ -32,4 +32,25 @@ function realizarLogin($usuario, $senha, $dados){
         
     }
 
+    header('location: index.php');
+
+}
+
+// FUNÇÃO DE VALIDAÇÃO DE LOGIN :
+//VERIFICA SE O USUARIO PASSOU PELO PROCESSO DE LOGIN
+
+function verificarLogin(){
+
+    if($_SESSION["id"] != session_id() || (empty($_SESSION["id"])) ){
+
+        header("location: index.php");
+    }
+
+}
+
+function finalizarLogin(){
+    session_unset(); // LIMPA TODAS AS VARIAVEIS D SESSÃO
+    session_destroy(); // DESTROI A SESSÃO ATIVAT
+
+    header('location: index.php');
 }
